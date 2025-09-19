@@ -1,0 +1,13 @@
+{
+  "documentsPath": "/Users/luizsoares/Documents/buildaz/mcp_rag/docs",
+  "chunkSize": 1000,
+  "chunkOverlap": 200,
+  "ollamaUrl": "http://localhost:11434",
+  "embeddingModel": "nomic-embed-text",
+  "chromaUrl": "http://localhost:8001",
+  "collectionName": "rag_documents",
+  "mcpServer": {
+    "name": "mcp-rag-server",
+    "version": "1.0.0"
+  }
+}
