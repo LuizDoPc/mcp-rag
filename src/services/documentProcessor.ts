@@ -2,7 +2,6 @@ import { readFileSync, statSync } from 'fs';
 import { extname, basename } from 'path';
 import { glob } from 'glob';
 import matter from 'gray-matter';
-// import pdf from 'pdf-parse';
 import { encoding_for_model } from 'tiktoken';
 import { Config } from '../config.js';
 import { DocumentChunk } from './vectorStore.js';
@@ -43,6 +42,10 @@ export class DocumentProcessor {
     const extension = extname(filePath).toLowerCase();
     const fileName = basename(filePath);
     
+    if (!statSync(filePath).isFile()) {
+      throw new Error(`File does not exist: ${filePath}`);
+    }
+    
     let content: string;
     let metadata: any = {};
 
@@ -50,7 +53,8 @@ export class DocumentProcessor {
       switch (extension) {
         case '.pdf':
           try {
-            const pdf = (await import('pdf-parse')).default;
+            const pdfModule = await import('pdf-parse');
+            const pdf = pdfModule.default;
             const pdfBuffer = readFileSync(filePath);
             const pdfData = await pdf(pdfBuffer);
             content = pdfData.text;
@@ -59,7 +63,8 @@ export class DocumentProcessor {
               pages: pdfData.numpages
             };
           } catch (error) {
-            throw new Error(`Failed to parse PDF: ${error}`);
+            console.warn(`Failed to parse PDF ${filePath}:`, error);
+            return [];
           }
           break;
         

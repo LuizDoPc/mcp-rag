@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "type": "module",
   "scripts": {
-    "build": "tsc",
+    "build": "patch-package && tsc",
     "dev": "tsx src/index.ts",
     "start": "node dist/index.js",
     "ingest": "tsx src/scripts/ingest.ts",
@@ -23,7 +23,9 @@
     "dotenv": "^17.2.2",
     "glob": "^10.3.10",
     "gray-matter": "^4.0.3",
+    "patch-package": "^8.0.0",
     "pdf-parse": "^1.1.1",
+    "pdf2pic": "^3.2.0",
     "tiktoken": "^1.0.10",
     "zod": "^3.22.4"
   },

@@ -2,6 +2,8 @@
 
 A Model Context Protocol (MCP) server that provides RAG (Retrieval-Augmented Generation) functionality using local embeddings via Ollama and Chroma vector database.
 
+[Presentation link](https://docs.google.com/presentation/d/1qcE-Ya1074sRvpCh_g0oYFFW9PSr0jDkXO0mJnrL7E0/edit?usp=sharing)
+
 ## Features
 
 - **Local Processing**: No external API costs - runs entirely locally
