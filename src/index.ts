@@ -10,11 +10,20 @@ import { createResources, handleResourceRead, isResourceUri } from './mcp/resour
 
 async function main() {
   try {
-    const config = loadConfig();
+    const config = loadConfig('./config.json');
     const ragService = new RAGService(config);
 
     await ragService.initialize();
     console.error('RAG service initialized successfully');
+
+    // Automatically ingest documents on startup
+    console.error('Starting automatic document ingestion...');
+    try {
+      const result = await ragService.ingestDocuments();
+      console.error(`Auto-ingestion completed: ${result.processed} documents processed, ${result.chunks} chunks created`);
+    } catch (error) {
+      console.error('Auto-ingestion failed:', error);
+    }
 
     const server = new Server(
       {

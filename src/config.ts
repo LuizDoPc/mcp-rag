@@ -3,7 +3,7 @@ import { readFileSync } from 'fs';
 import { join } from 'path';
 
 const ConfigSchema = z.object({
-  documentsPath: z.string().default('./docs'),
+  documentsPath: z.string().default('/Users/luizsoares/Documents/buildaz/mcp_rag/docs'),
   chunkSize: z.number().default(1000),
   chunkOverlap: z.number().default(200),
   ollamaUrl: z.string().default('http://localhost:11434'),
@@ -20,7 +20,7 @@ export type Config = z.infer<typeof ConfigSchema>;
 
 export function loadConfig(configPath?: string): Config {
   const defaultConfig: Config = {
-    documentsPath: './docs',
+    documentsPath: '/Users/luizsoares/Documents/buildaz/mcp_rag/docs',
     chunkSize: 1000,
     chunkOverlap: 200,
     ollamaUrl: 'http://localhost:11434',
@@ -49,7 +49,7 @@ export function loadConfig(configPath?: string): Config {
 
 export function createDefaultConfig(): void {
   const defaultConfig = {
-    documentsPath: './docs',
+    documentsPath: '/Users/luizsoares/Documents/buildaz/mcp_rag/docs',
     chunkSize: 1000,
     chunkOverlap: 200,
     ollamaUrl: 'http://localhost:11434',

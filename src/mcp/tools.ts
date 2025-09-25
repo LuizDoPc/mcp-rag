@@ -5,15 +5,10 @@ export function createTools(ragService: RAGService): Tool[] {
   return [
     {
       name: 'ingest_docs',
-      description: 'Ingest documents from a directory into the RAG system',
+      description: 'Re-ingest documents from the configured documents directory. Use this if search returns no results or if documents have been updated',
       inputSchema: {
         type: 'object',
-        properties: {
-          path: {
-            type: 'string',
-            description: 'Path to the directory containing documents to ingest (optional, uses config default if not provided)'
-          }
-        }
+        properties: {}
       }
     },
     {
@@ -63,7 +58,7 @@ export function createTools(ragService: RAGService): Tool[] {
 export async function handleToolCall(toolName: string, args: any, ragService: RAGService): Promise<any> {
   switch (toolName) {
     case 'ingest_docs':
-      const result = await ragService.ingestDocuments(args.path);
+      const result = await ragService.ingestDocuments();
       return {
         success: true,
         message: `Successfully processed ${result.processed} documents and created ${result.chunks} chunks`,

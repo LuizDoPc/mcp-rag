@@ -6,7 +6,7 @@ import { RAGService } from '../services/ragService.js';
 async function testRAGService() {
   console.log('🧪 Testing RAG Service...\n');
 
-  const config = loadConfig();
+  const config = loadConfig('./config.json');
   const ragService = new RAGService(config);
 
   try {

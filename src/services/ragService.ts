@@ -24,7 +24,7 @@ export class RAGService {
   async ingestDocuments(directoryPath?: string): Promise<{ processed: number; chunks: number }> {
     const path = directoryPath || this.config.documentsPath;
     
-    // Resolve path relative to the project root, not the current working directory
+    // Always use absolute path - if config path is already absolute, use it; otherwise resolve it
     const absolutePath = path.startsWith('/') ? path : resolve(process.cwd(), path);
     
     console.error(`Processing documents from: ${path}`);

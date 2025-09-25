@@ -57,7 +57,7 @@ The server uses a `config.json` file for configuration:
   "chunkOverlap": 200,
   "ollamaUrl": "http://localhost:11434",
   "embeddingModel": "nomic-embed-text",
-  "chromaUrl": "http://localhost:8000",
+  "chromaUrl": "http://localhost:8001",
   "collectionName": "rag_documents",
   "mcpServer": {
     "name": "mcp-rag-server",
@@ -105,7 +105,6 @@ Add to your Cursor MCP settings:
 
 ## Troubleshooting
 
-1. **Port 8000 already in use**: ChromaDB is already running
-2. **Ollama Connection Issues**: Ensure Ollama is running on the configured URL
-3. **Model Not Found**: Run `ollama pull nomic-embed-text` to install the embedding model
-4. **Docker Issues**: Ensure Docker is running and accessible
+1. **Ollama Connection Issues**: Ensure Ollama is running on the configured URL
+2. **Model Not Found**: Run `ollama pull nomic-embed-text` to install the embedding model
+3. **Docker Issues**: Ensure Docker is running and accessible
